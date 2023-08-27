@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Auto messege Sender</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header {
+            background-color: green;
+            width: 100%;
+            padding: 0px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+       .header > h1 {
+        color: white;
+       }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+            margin: 100px ;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+            box-shadow: 2px 2px 8px green;
+        }
+
+        h1 {
+            color: green;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #countryCode {
+            width: 30px;
+        }
+
+        input {
+            border: 1px solid green;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        textarea {
+            width: 200px;
+            height: fit-content;
+            border-color: green;
+        }
+
+        #linkOutput {
+            background-color: rgba(0, 128, 0, 0.275);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1> AUTO LINK GENERATOR </h1>
+    </div>
+
+
+    <div class="container">
+        <h1>WhatsApp Auto Sender</h1>
+    <div>    
+        <input type="text" id="countryCode" placeholder="+234">
+        <input type="tel" id="phoneNumber" placeholder="Phone Number">
+    </div>    
+        <textarea id="message" placeholder="Enter your message"></textarea>
+        <button id="generateLink">Generate Link</button>
+        <p id="linkOutput"></p>
+        <button id="copyLink">Copy Link</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateLinkButton = document.getElementById('generateLink');
+            const copyLinkButton = document.getElementById('copyLink');
+            const countryCodeInput = document.getElementById('countryCode');
+            const phoneNumberInput = document.getElementById('phoneNumber');
+            const messageInput = document.getElementById('message');
+            const linkOutput = document.getElementById('linkOutput');
+
+            generateLinkButton.addEventListener('click', function() {
+                const countryCode = countryCodeInput.value;
+                const phoneNumber = phoneNumberInput.value;
+                const message = encodeURIComponent(messageInput.value);
+
+                if (countryCode.trim() !== '' && phoneNumber.trim() !== '' && message.trim() !== '') {
+                    const fullPhoneNumber = `${countryCode}${phoneNumber}`;
+                    const link = `https://tinyurl.com/generatebrostimwhat/send?phone=${fullPhoneNumber}&text=${message}`;
+                    linkOutput.innerText = link;
+                    copyLinkButton.disabled = false; 
+                    copyLinkButton.dataset.link = link;
+                } else {
+                    linkOutput.innerHTML = '';
+                    copyLinkButton.disabled = true;
+                    copyLinkButton.dataset.link = '';
+                }
+
+                if (countryCode == '') {
+                    alert('enter your country code 🤨🤨🤔')
+                }
+                else if (phoneNumber == '') {
+                    alert('enter your phone number 🤨🤨🤔')
+                }
+                else if (message == '') {
+                    alert('enter your country code 🤨🤨🤔')
+                }
+
+            });
+
+            copyLinkButton.addEventListener('click', function() {
+                const linkToCopy = this.dataset.link;
+                if (linkToCopy) {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = linkToCopy;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    alert('Link copied to clipboard!');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

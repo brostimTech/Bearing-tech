@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business card generator</title>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      flex-direction: column;
+    }
+
+    .header {
+      background-color: black;
+      width: 100%;
+      display: flex;
+      padding: 10px;
+      margin: 10px;
+      justify-content: center;
+    }
+
+    .header > h1 {
+      color: white;
+    }
+
+    #idCardBackground {
+      width: 300px;
+      height: 180px;
+      background: linear-gradient(to bottom right, #3498db, #e74c3c);
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+      position: relative;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #idCardBackground::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.1);
+      z-index: -1;
+    }
+
+    /* Additional styling for content inside the div */
+    #idCardBackground h1 {
+      margin: 0;
+      font-size: 18px;
+    }
+    
+    i {
+      font-size: 11px;
+      display: flex;
+    }
+    
+    p {
+      line-height: 0px;
+    }
+    
+    .card-name {
+      padding: 2px;
+      margin-right: 230px;
+    }
+    
+    .line {
+      background: green;
+      width: 100%;
+      height: 3px;
+      margin: 5px;
+    }
+    
+    .card-info {
+      padding: 2px;
+      text-align: center;
+    }
+    
+    .logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    #contact {
+      display: flex;
+      padding: 2px;
+      margin-right: -200px;
+      margin-top: -15px;
+    }
+
+    #inputForm {
+      display: flex;
+      margin: 50px;
+      width: 500px;
+      flex-wrap: wrap;
+      gap: 10px;
+      border: 2px solid saddlebrown;
+      padding: 20px;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    input {
+      padding: 5px;
+      border: 1px solid saddlebrown;
+      border-radius: 5px;
+    }
+
+    label {
+      font-size: 18px;
+      font-weight: 900;
+      color: saddlebrown;
+    }
+
+    button {
+      background-color: #3498db;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+    }
+    
+    
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>BUSINESS CARD CREATOR</h1>
+  </div>
+
+
+  <div id="inputForm">
+    <div class="input-div">
+        <label for="backgroundColor">Background Color: </label>
+        <input type="color" id="backgroundColor" value="red"><br><br>
+    </div>
+    
+    <div class="input-div">
+        <label for="backgroundColor">Background Color under: </label>
+        <input type="color" id="backgroundColorUnder" value="black"><br><br>
+    </div>
+    
+    <div class="input-div">
+        <label for="text-color">Text color: </label>
+        <input type="color" id="text-color" value="white"><br><br>
+    </div>
+    
+    <div class="input-div">
+        <label for="line- color">Line color: </label>
+        <input type="color" id="line-color" value="grade"><br><br>
+    </div>
+    
+    <div class="input-div">
+        <label for="nameInput">Name: </label>
+        <input type="text" id="nameInput" placeholder="BROSTIM_TECH"><br><br>
+    </div>
+    
+    <div class="input-div">
+        <label for="occupationInput">Occupation: </label>
+        <input type="text" id="occupationInput" placeholder="software developer/tech-content creator"><br><br>
+    </div>
+    
+    <div class="input-div">
+        <label for="phoneInput">phone number: </label>
+        <input type="text" id="phoneInput" placeholder="+2347000000"><br><br>
+    </div>    
+    
+        <label for="occupationInput">Logo: </label>
+        <input type="file" id="logoInput" value="Designer" onchange="loadFile(event)"><br><br>
+        
+       
+        <button type="button" id="updateButton">Update</button>
+      </div>  
+
+
+
+  <div id="idCardBackground">
+  <div class="card-name">
+    <i id="text">business card</i>
+  </div>
+
+  <div id="contact">
+    <i id="phoneNo">call: +2347000000000</i>
+  </div>
+  
+  <div id="line" class="line">
+  </div>
+  
+  <div class="logo">
+     <img width="100" id="logo_display" src="" alt="">
+  </div>
+  
+  <div class="card-info">
+    <p id="name">BROSTIM_TECH</p>
+    <p id="occupation">software developer/tech-content creator</p>
+  </div>
+  
+  <div id="line"  class="line">
+  </div>
+
+  </div>
+    <br><br><br><br>
+
+  <button id="generateimage" onclick="captureCard()">DOWNLOAD</button>
+
+  <br><br><br><br><br>
+  
+  
+
+  <script>
+    const updateButton = document.getElementById('updateButton');
+    updateButton.addEventListener('click', updateStyles);
+
+    function updateStyles() {
+      const backgroundColor = document.getElementById('backgroundColor').value;
+      const backgroundColorUnder = document.getElementById('backgroundColorUnder').value;
+      const name = document.getElementById('nameInput').value;
+      const occupation = document.getElementById('occupationInput').value;
+
+      const idCardBackground = document.getElementById('idCardBackground');
+      idCardBackground.style.background = `linear-gradient(to bottom right, ${backgroundColor}, ${backgroundColorUnder})`;
+
+      const nameElement = document.getElementById('name');
+      nameElement.textContent = name.toUpperCase();
+      
+
+      const occupationElement = document.getElementById('occupation');
+      occupationElement.textContent = occupation;
+     
+
+      const textColor = document.getElementById('text-color').value;
+      const lineColor = document.getElementById('line-color').value;
+      const line = document.getElementById('line')
+      const text = document.getElementById('text')
+
+      line.style.background = lineColor;
+      text.style.color = textColor;
+      occupationElement.style.color = textColor;
+      nameElement.style.color = textColor;
+
+
+      const phoneNumber = document.getElementById('phoneNo');
+      const phoneInput = document.getElementById('phoneInput').value;
+
+      phoneNumber = phoneInput;
+      phoneNumber.style.color = textColor
+
+
+    }
+
+    var loadFile = function(event) {
+    var logo_display = document.getElementById('logo_display');
+    logo_display.src = URL.createObjectURL(event.target.files[0]);
+    logo_display.onload = function () {
+        URL.revokeObjectURL(logo_display.src);
+        // Free memory
+    };
+};
+
+
+// Add this function to handle file input changes
+function handleLogoUpload(event) {
+  const logoFile = event.target.files[0];
+  const logoDisplay = document.getElementById('logo_display');
+
+  const reader = new FileReader();
+  reader.onload = function() {
+    logoDisplay.src = reader.result;
+  };
+  reader.readAsDataURL(logoFile);
+}
+
+// Attach the handleLogoUpload function to the logo input element
+const logoInput = document.getElementById('logoInput');
+logoInput.addEventListener('change', handleLogoUpload);
+
+// Modify the captureCard function
+function captureCard() {
+  alert("An image of this card will be downloaded.");
+
+  const table = document.getElementById("idCardBackground");
+
+  // Use html2canvas to capture the card
+  html2canvas(table).then(function(canvas) {
+    const imageDataURL = canvas.toDataURL("image/png");
+
+    // Create a download link for the captured image
+    const downloadLink = document.createElement("a");
+    downloadLink.href = imageDataURL;
+    downloadLink.download = "business_card.png";
+    downloadLink.textContent = "Download Image";
+    document.body.appendChild(downloadLink);
+
+    // Trigger a click event on the download link to start the download
+    downloadLink.click();
+
+    // Remove the download link from the DOM
+    document.body.removeChild(downloadLink);
+  });
+}
+
+
+
+  </script>
+</body>
+</html>

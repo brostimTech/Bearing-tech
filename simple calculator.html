@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Simple Calculator </title>
+</head>
+<body>
+
+  <style>
+  
+  
+    
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .header {
+        width: 100%;
+        background-color: blue;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .calculator {
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 5px;
+      border: 2px solid blue;
+      margin: 50px;
+    }
+
+    #result {
+      width: 90%;
+      padding: 10px;
+      font-size: 24px;
+      text-align: right;
+      margin-bottom: 10px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 20px;
+      text-align: center;
+      background-color: lightblue;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .operator {
+      background-color: #a8e0b4;
+    }
+    
+    .clear {
+      background-color: #e0a8a8;
+    }
+    
+    .calculate {
+      background-color: #a8b1e0;
+    }
+    
+    .container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px blue;
+    border: 2px solid blue;
+    width: 200px;
+    margin: 50px;
+    }
+    
+    label, input {
+    display: block;
+    margin-bottom: 10px;
+    }
+    
+    .interest-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    }
+    
+    button:hover {
+    background-color: #0056b3;
+    }
+    
+    #result {
+    margin-top: 20px;
+    }
+
+    .interest-input {
+        padding: 10px;
+        border-color: blue;
+        border-radius: 5px;
+
+    }
+  </style>
+</head>
+<body>
+
+
+
+    <div class="header">
+        <h1>SIMPLE CALCULATOR</h1>
+    </div>
+
+
+
+  <div class="calculator">
+    <!-- Calculator display -->
+    <input type="text" id="result" disabled>
+    <!-- Calculator buttons -->
+    <div class="buttons">
+      <!-- Clear button -->
+      <button class="operator clear" onclick="clearResult()">C</button>
+      <!-- Number buttons -->
+      <button onclick="appendToResult('7')">7</button>
+      <button onclick="appendToResult('8')">8</button>
+      <button onclick="appendToResult('9')">9</button>
+      <!-- Division button -->
+      <button class="operator" onclick="appendToResult('/')">/</button>
+      <button onclick="appendToResult('4')">4</button>
+      <button onclick="appendToResult('5')">5</button>
+      <button onclick="appendToResult('6')">6</button>
+      <!-- Multiplication button -->
+      <button class="operator" onclick="appendToResult('*')">X</button>
+      <button onclick="appendToResult('1')">1</button>
+      <button onclick="appendToResult('2')">2</button>
+      <button onclick="appendToResult('3')">3</button>
+      <!-- Subtraction button -->
+      <button class="operator" onclick="appendToResult('-')">-</button>
+      <button onclick="appendToResult('0')">0</button>
+      <!-- Decimal point button -->
+      <button onclick="appendToResult('.')">.</button>
+      <!-- Calculate button -->
+      <button class="calculate" onclick="calculateResult()">=</button>
+      <!-- Addition button -->
+      <button class="operator" onclick="appendToResult('+')">+</button>
+    </div>
+  </div>
+<br>
+<div class="container">
+  <h1>Simple Interest Calculator</h1>
+  <label for="principal">Principal Amount:</label>
+  <input class="interest-input" type="number" id="principal" placeholder="Enter principal amount">
+  <label for="rate">Rate of Interest (%):</label>
+  <input class="interest-input" type="number" id="rate" placeholder="Enter rate of interest">
+  <label for="time">Time (years):</label>
+  <input class="interest-input" type="number" id="time" placeholder="Enter time in years">
+  <button class="interest-btn" onclick="calculateInterest()">Calculate</button>
+  <p id="interest-result"></p>
+</div>
+
+
+
+
+  <script>
+    // JavaScript logic for the calculator
+    let result = document.getElementById('result');
+    let isCalculated = false;
+
+    function appendToResult(value) {
+      if (isCalculated) {
+        result.value = '';
+        isCalculated = false;
+      }
+      result.value += value;
+    }
+
+    function clearResult() {
+      result.value = '';
+    }
+
+    function calculateResult() {
+      try {
+        result.value = eval(result.value);
+        isCalculated = true;
+      } catch (error) {
+        result.value = 'Error';
+        
+      }
+    }
+    
+    function calculateInterest() {
+    const principal = parseFloat(document.getElementById('principal').value);
+    const rate = parseFloat(document.getElementById('rate').value);
+    const time = parseFloat(document.getElementById('time').value);
+    
+    const interest = (principal * rate * time) / 100;
+    const totalAmount = principal + interest;
+    
+    const resultElement = document.getElementById('interest-result');
+    resultElement.innerHTML = `Simple Interest: ${interest.toFixed(2)}<br>Total Amount: ${totalAmount.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
+</body>
+</html>

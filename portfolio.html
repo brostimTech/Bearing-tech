@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particle Background</title>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @media all and (max-width: 380) { }
+            
+      
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: flex-start;
+            flex-direction: column;
+        }
+        
+        .header-div{
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            
+        }
+        
+        .brand-name {
+            color: white;
+            font-weight: 100;
+        }
+        
+        .fa-signature {
+            color: #31ada3;
+            font-size: 40px;
+        }
+        
+        .fa-bars-staggered {
+            color: white;
+            margin-right: 0;
+            margin-left: 150px;;
+        }
+        
+        
+        
+        .media {
+            color: #fffcfa;
+            width: 3.5rem;
+            font-size: 25px;
+            transition: 2s;
+        }
+        
+        .house-media {
+            display: flex;
+            padding: 10px;
+            
+        }
+        
+        .head-media {
+            border: 2px solid #31ada3;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin: 13px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        
+        .my-passport {
+            
+            border: 2px solid #31ada3;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .profile {
+            
+            color: white;
+        }
+
+        .youtube {
+            margin-left: 15%;
+        }
+        
+        .description-div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            background: rgba(87, 87, 97, 0.3);
+            color: white; 
+            border-radius: 5px;
+            width: 300px;
+        }
+        
+        @keyframes typewriter {
+        0% {
+        width: 0;
+        height: 0;
+        }
+        100% {
+        width: 100%;
+        height: 100%;
+        }
+        }
+        
+        
+        .explanation {
+        overflow: hidden;
+        }
+        .explanation span {
+        display: block;
+        animation: typewriter 5s steps(50) 1s 1 normal both;
+        border-right: 3px solid #000;
+        white-space: nowrap;
+        color: #31ada3;
+        display: flex;
+        overflow: hidden;
+        }
+        
+        .explanation span:nth-child(1){
+        animation-delay: 0s;
+        }
+        
+        .explanation span:nth-child(2){
+        animation-delay: 5s;
+        }
+        
+        .explanation span:nth-child(3){
+        animation-delay: 10s;
+        }
+        
+        .explanation span:nth-child(4){
+        animation-delay: 15s;
+        }
+        
+        .explanation span:nth-child(5){
+        animation-delay: 20s;
+        }
+        
+    
+
+        
+        #particles-js {
+            width: 100%;
+            height: 670px;
+            background-color: #000;
+            z-index: -1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            align-content: space-between;
+            position: absolute;
+            top: 0px;
+        }
+
+        .about-me-head-cover {
+            height: fit-content;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        .about-me-head {
+            margin: auto;
+            text-decoration: underline;
+            color: #31ada3;
+        }
+        
+        .about-me {
+            height: fit-content;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .about-icon-cover {
+            width: fit-content;
+            height: fit-content;
+            padding: 20px;
+            box-shadow: 3px 3px 9px #31ada3;
+            background-color: transparent;
+            display: flex;
+            margin: 10px;
+        }
+        
+        .about-icon {
+            border: 2px solid #31ada3;
+            padding: 10px;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            flex-direction: column;
+        }
+
+        .about-me-answer {
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 8px #31ada3;
+            margin: 10px;
+            width: 190px;
+        }
+
+
+        .about-me-answer > h4 {
+            color: #31ada3;
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+
+        .about-me-answer > p {
+            color: #31ada3;
+            font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+        }
+
+        
+        .fa-about {
+            font-size: 70px;
+            margin: 10px;
+            color: #31ada3; 
+        }
+
+        .fa-about-name{
+            font-size: 20px;
+            font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+            color: #31ada3;
+        }
+        
+        .project-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 10px;
+        }
+
+        .project {
+            border: none;
+            width: 400px;
+            margin: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 30px;
+            padding: 20px;
+            box-shadow: 2px 2px 8px #31ada3;
+        }
+
+        .project > button {
+            padding: 10px;
+            background-color: #31ada3;
+            border: none;
+            border-radius: 3px;
+        }
+
+        button > a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 5px;
+        }
+
+        .project > h3 {
+            color: #31ada3;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-decoration: overline;
+            font-size: 20px;
+        }
+
+        .languages {
+            color: #31ada3;
+        }
+
+        .languages > .language-icon {
+            color: rgb(255, 196, 0);
+        }
+
+
+        .footer-wrap {
+            width: 100%;
+            background-color: #000;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+
+        .email-form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px white;
+    background-color: #000;
+    gap: 10px;
+    flex-shrink: 1;
+  } 
+
+  .email-form > h2 {
+    color: gray;
+  }
+
+  .email-form input,
+  .email-form textarea {
+    display: block;
+    width: 90%;
+    margin-bottom: 10px;
+    background-color: black;
+    border: none;
+    box-shadow: 3px 3px 10px white;
+    padding: 10px;
+    color: white;
+  }
+
+   label {
+    color: gray;
+  }
+
+  .email-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #recipient {
+    display: none;
+  }
+
+nav {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      width: 100%;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+
+    li {
+      margin: 10px;
+      background-color: #31ada3;
+      padding: 10px;
+      border-radius: 2px;
+      max-height: 15px;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .top {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+
+    .copyRight {
+        color: #31ada3;
+    }
+
+    .cookie-banner {
+        width: 300px;
+        text-align: center;
+        background-color: white;
+        padding: 30px;
+        position: fixed;
+        top: 50%;
+        border-radius: 10px;
+        box-shadow: 3px 3px 9px #31ada3;
+    }
+    
+
+        
+    </style>
+</head>
+<body>
+
+<div id="particles-js">
+</div> 
+
+<div id="home" class="header-div">
+   <nav>
+    
+    <ul>
+      <div><i class="fa-solid fa-signature"></i></div>
+      <h3 class="brand-name">Brostim-tech</h3>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+</div>
+
+ <div class="house-media">
+   <div class="head-media"> <ion-icon class="media" name="logo-facebook"></ion-icon></div>
+   <div class="head-media"> <ion-icon class="media" name="logo-twitter"></ion-icon></div>
+   <div class="head-media"> <ion-icon class="media" name="logo-instagram"></ion-icon></div>
+   <div class="head-media"> <ion-icon class="media" name="logo-linkedin"></ion-icon></div>
+   <div class="head-media"> <i class="media youtube fa-brands fa-youtube"></i> </div>
+ </div>
+
+ <div class="my-passport">
+   <img width="200" src="Polish_20230722_182735276.jpg" >
+ </div>
+ 
+ <h1 class="profile profile-name">Eze Timothy Ebube</h1>
+ 
+  <div class="description-div">
+ <h5 class="explanation">
+  <span>"Hello there! I'm Timothy Ebube, but you might know</span>
+  <span>me as Brostim. I'm a passionate web developer with</span> 
+  <span>a knack for turning ideas into beautiful &functional</span>
+  <span>websites. Feel free to browse through my portfolio &</span>
+  <span>discover my journey in web development."</span>
+  </h5>
+ </div>
+<br><br>
+
+
+<div id="about" class="about-me">
+
+<div class="about-me-head-cover">
+   <h1 class="about-me-head">ABOUT ME</h1>
+</div>
+<br><br>
+<div class="about-icon-cover">
+   <div class="about-icon"><i class=" fa-about fa-solid fa-location-dot"></i><h5 class=" fa-about-name">LOCATION</h5></div>   
+   <div class="about-me-answer">
+       <h4>NIGERIA</h4>
+          <P>Am from Enugu State, located at the South-Eastern part of Nigeria in West-Africa</P>
+   </div>
+</div>
+<br><br>
+<div class="about-icon-cover">
+   <div class="about-icon"><i class=" fa-about fa-solid fa-user-graduate"></i><h5 class=" fa-about-name">DEGREE</h5></div>   
+   <div class="about-me-answer">
+    <h4>BSC</h4>
+    <P>Am pursuing for the degree of BSC (Computer Science) in State University of medical & applied science</P>
+   </div>
+</div>
+<br><br>
+<div class="about-icon-cover">
+   <div class="about-icon"><i class=" fa-about fa-solid fa-atom"></i><h5 class=" fa-about-name">LANGUAGE</h5></div>   
+   <div class="about-me-answer">
+    <h4>REACT/JAVASCRIPT</h4>
+    <P>I have had more than 3 years experience building project with JavaScript and React</P>
+   </div>
+</div>
+<br><br>
+<div class="about-icon-cover">
+   <div class="about-icon"><i class=" fa-about fa-solid fa-hands-bubbles"></i><h5 class=" fa-about-name">JOB</h5></div>   
+   <div class="about-me-answer">
+    <h4>FREELANCER</h4>
+    <P>Am currently working as a freelancer, you can contact me if you need my service</P>
+   </div>
+</div>
+<br><br>
+<div class="about-icon-cover">
+   <div class="about-icon"><i class=" fa-about fa-brands fa-joget"></i><h5 class=" fa-about-name">HUBBY</h5></div>   
+   <div class="about-me-answer">
+    <h4>I LOVE 👇👇</h4>
+    <P>Singing, acting, writting codes, creating contents and travlling.</P>
+   </div>
+</div>
+<br><br>
+<div class="about-icon-cover">
+   <div class="about-icon"><i class=" fa-about fa-solid fa-door-open"></i><h5 class=" fa-about-name">LANGUAGE</h5></div>   
+   <div class="about-me-answer">
+    <h4>ENGLISH & MOTHER TONGUE</h4>
+    <P>Am very fluent in English as it serves as an official language in my country.</P>
+   </div>
+</div>
+<br><br>
+
+<div class="project-wrap">
+  
+    <div id="services" class="project">
+
+        <h3>CLICK TO VIEW MY PROJECTS</h3>
+
+        <button><a href="gp.html">GPA Calculator</a></button>
+        <button><a href="simple calculator.html">Your Calculator</a></button>
+        <button><a href="id.card.html">Business card</a></button>
+        <button><a href="whatsapp api.html">Whatsapp API</a></button>
+        <button><a href="whatsapp api.html">Github Page</a></button>
+
+    
+    </div>
+
+    
+    <div id="services" class="project">
+       <h2 class="languages">
+          JAVASCRIPT:
+          <ion-icon class="language-icon" name="star"></ion-icon>
+          <ion-icon class="language-icon" name="star"></ion-icon>
+          <ion-icon class="language-icon" name="star"></ion-icon>
+          <ion-icon class="language-icon" name="star"></ion-icon>
+          <ion-icon class="language-icon" name="star-half-outline"></ion-icon>
+       </h2>
+
+       <h2 class="languages">
+        REACT:
+        <ion-icon class="language-icon" name="star"></ion-icon>
+        <ion-icon class="language-icon" name="star"></ion-icon>
+        <ion-icon class="language-icon" name="star"></ion-icon>
+        <ion-icon class="language-icon" name="star-half-outline"></ion-icon>
+         <ion-icon class="language-icon" name="star-outline"></ion-icon>
+     </h2>
+
+     <h2 class="languages">
+        JAVA:
+        <ion-icon class="language-icon" name="star"></ion-icon>
+        <ion-icon class="language-icon" name="star"></ion-icon>
+        <ion-icon class="language-icon" name="star"></ion-icon>
+        <ion-icon class="language-icon" name="star-outline"></ion-icon>
+         <ion-icon class="language-icon" name="star-outline"></ion-icon>
+     </h2>
+
+     <h2 class="languages">
+        PYTHON:
+        <ion-icon class="language-icon" name="star"></ion-icon>
+        <ion-icon class="language-icon" name="star"></ion-icon>
+        <ion-icon class="language-icon" name="star"></ion-icon>
+        <ion-icon class="language-icon" name="star-outline"></ion-icon>
+         <ion-icon class="language-icon" name="star-outline"></ion-icon>
+     </h2>
+    </div>
+     
+
+</div>
+</div>
+
+<br><br><br><br>
+
+
+<div id="contact" class="footer-wrap">
+
+<div class="email-form">
+            <h2>Contact Us</h2>
+            <form id="emailForm">
+              <label for="recipient"></label>
+              <input type="text" id="recipient" name="recipient" value="timbros525@gmail.com" required>
+          
+              <label for="subject">Subject:</label>
+              <input type="text" id="subject" name="subject" required>
+          
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+          
+              <button type="submit">Send Email</button>
+            </form>
+          </div>
+
+
+          <div class="house-media">
+            <div class="head-media"> <ion-icon class="media" name="logo-facebook"></ion-icon></div>
+            <div class="head-media"> <ion-icon class="media" name="logo-twitter"></ion-icon></div>
+            <div class="head-media"> <ion-icon class="media" name="logo-instagram"></ion-icon></div>
+            <div class="head-media"> <ion-icon class="media" name="logo-linkedin"></ion-icon></div>
+            <div class="head-media"> <i class="media youtube fa-brands fa-youtube"></i> </div>
+          </div>
+<p class="copyRight">&copy: 2023, Brostim-tech | all right reserved</p>
+</div>
+
+  <!-- ... Rest of your HTML code ... -->
+  
+
+
+ <li class="top"><a href="#home">Top☝</a></li>
+
+    
+    
+   
+    <script src="./assets/js/script.js"></script>
+   
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
+    
+    <script> 
+
+
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    const showMenu = document.getElementById('menu-display');
+    const menuBtn = document.getElementById('menu-3lines');
+
+const emailForm = document.getElementById("emailForm");
+  emailForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    const recipient = encodeURIComponent(emailForm.recipient.value);
+    const subject = encodeURIComponent(emailForm.subject.value);
+    const message = encodeURIComponent(emailForm.message.value);
+    
+    const mailtoLink = `mailto:${recipient}?subject=${subject}&body=${message}`;
+    
+    window.location.href = mailtoLink;
+  });
+
+
+
+
+
+  function setCookie(name, value, days) {
+  const expirationDate = new Date();
+  expirationDate.setTime(expirationDate.getTime() + (days * 24 * 60 * 60 * 1000));
+  const expires = "expires=" + expirationDate.toUTCString();
+  document.cookie = name + "=" + value + "; " + expires + "; path=/";
+}
+
+// Example usage
+setCookie("username", "john_doe", 30); // Set a cookie named "username" with the value "john_doe" that expires in 30 days
+
+function getCookie(name) {
+  const cookies = document.cookie.split('; ');
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].split('=');
+    if (cookie[0] === name) {
+      return cookie[1];
+    }
+  }
+  return null;
+}
+
+// Example usage
+const username = getCookie("username"); // Get the value of the "username" cookie
+
+function deleteCookie(name) {
+  document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
+// Example usage
+deleteCookie("username"); // Delete the "username" cookie
+
+
+
+
+
+
+
+    particlesJS('particles-js', {
+    particles: {
+    number: {
+    value: 80,
+    density: {
+    enable: true,
+    value_area: 800
+    }
+    },
+    color: {
+    value: "#ffffff"
+    },
+    shape: {
+    type: "circle",
+    stroke: {
+    width: 0,
+    color: "#000000"
+    },
+    polygon: {
+    nb_sides: 5
+    }
+    },
+    opacity: {
+    value: 0.5,
+    random: false,
+    anim: {
+    enable: false,
+    speed: 1,
+    opacity_min: 0.1,
+    sync: false
+    }
+    },
+    size: {
+    value: 3,
+    random: true,
+    anim: {
+    enable: false,
+    speed: 40,
+    size_min: 0.1,
+    sync: false
+    }
+    },
+    line_linked: {
+    enable: true,
+    distance: 150,
+    color: "#ffffff",
+    opacity: 0.4,
+    width: 1
+    },
+    move: {
+    enable: true,
+    speed: 6,
+    direction: "none",
+    random: false,
+    straight: false,
+    out_mode: "out",
+    bounce: false,
+    attract: {
+    enable: false,
+    rotateX: 600,
+    rotateY: 1200
+    }
+    }
+    },
+    interactivity: {
+    detect_on: "canvas",
+    events: {
+    onhover: {
+    enable: true,
+    mode: "repulse"
+    },
+    onclick: {
+    enable: true,
+    mode: "push"
+    },
+    resize: true
+    },
+    modes: {
+    grab: {
+    distance: 400,
+    line_linked: {
+    opacity: 1
+    }
+    },
+    bubble: {
+    distance: 400,
+    size: 40,
+    duration: 2,
+    opacity: 8,
+    speed: 3
+    },
+    repulse: {
+    distance: 100,
+    duration: 0.4
+    },
+    push: {
+    particles_nb: 4
+    },
+    remove: {
+    particles_nb: 2
+    }
+    }
+    },
+    retina_detect: true
+    });
+    </script>
+    
+</body>
+</html>
